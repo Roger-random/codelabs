@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
     :host {
       cursor: grab;
     }
-    
+
     .guess-box {
       aspect-ratio: 1/1;
 
@@ -33,6 +33,7 @@ import { CommonModule } from '@angular/common';
 
       color: white;
       text-shadow: 1px 2px 1px rgb(255 255 255 / 50%);
+    }
   `,
   ],
 })
