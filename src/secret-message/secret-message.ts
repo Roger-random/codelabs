@@ -11,13 +11,12 @@ import { CipherService } from '../cipher/service.cipher';
   selector: 'secret-message',
   standalone: true,
   imports: [CommonModule, MatDialogModule, MatButtonModule],
-  // TODO(2): Define your first computed()
   template: `
   <div class="screen">
     <div class="message">
       <h4>Decipher a secret message from {{ this.sender }}:</h4>
       <h1>
-        <span *ngFor="let char of this.messages.solvedMessage.split(''); index as i;" [class.unsolved]="this.messages.solvedMessage[i] !== this.messages.superSecretMessage()[i]" >{{ char }}</span>
+        <span *ngFor="let char of this.messages.solvedMessage().split(''); index as i;" [class.unsolved]="this.messages.solvedMessage()[i] !== this.messages.superSecretMessage()[i]" >{{ char }}</span>
       </h1>
     </div>
     <button class="new-message-button" (click)="openDialog()">Customize</button>

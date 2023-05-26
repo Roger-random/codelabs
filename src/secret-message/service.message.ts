@@ -10,10 +10,10 @@ export class MessageService {
   secretMessage = computed(() =>
     this.translateMessage(this.superSecretMessage(), this.cipher.cipher())
   );
-  // TODO(2): Define your first computed()
-  solvedMessage = this.translateMessage(
-    this.secretMessage(),
-    this.cipher.decodedCipher()
+  solvedMessage = computed(() =>
+    this.translateMessage(
+      this.secretMessage(),
+      this.cipher.decodedCipher())
   );
 
   constructor(private cipher: CipherService) {}
