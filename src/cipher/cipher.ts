@@ -24,11 +24,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     <div class="key-container"
           matTooltip="Drap and drop black letters to the white keypad to decode the secret message."
           [matTooltipPosition]="'above'">
-      <letter-key 
-        *ngFor="let l of this.cipher.alphabet" 
+      <letter-key
+        *ngFor="let l of this.cipher.alphabet"
         [letter]="l"
         [solution]="getCipherSolution(l)"
-        cdkDropList 
+        cdkDropList
         cdkDropListSortingDisabled
         [cdkDropListData]="l"/>
     </div>
@@ -36,8 +36,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       cdkDropList
       cdkDropListSortingDisabled>
       <letter-guess
-        *ngFor="let l of this.cipher.unsolvedAlphabet()" 
-        [letter]="l" 
+        *ngFor="let l of this.cipher.unsolvedAlphabet()"
+        [letter]="l"
         cdkDrag
         [cdkDragData]="l"
         (cdkDragDropped)="drop($event)">
@@ -87,7 +87,12 @@ export class CipherComponent implements OnInit {
       }
     }
 
-    // TODO(3): Add your first effect()
+    effect(() => {
+      if (this.messages.superSecretMessage() === this.messages.solvedMessage()) {
+        var confettiCanvas = document.getElementById('confetti-canvas');
+        confetti.create()(confettiCanvas, { particleCount: 100 });
+      }
+    });
   }
 
   drop(event: CdkDragDrop<string, string>) {
